@@ -1,38 +1,53 @@
 #include <iostream>
-#include <string>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
+
+
 int solution(int bridge_length, int weight, vector<int> truck_weights)
 {
-	int truck_num = truck_weights.size();
-	int answer = 0; // 다리를 건너는데 총 걸리는 시간의 합
-	int now_weight = 0; // 현재 다리위에 가해진 무게의 합
-	int now_truck = 0; // 현재 다리위에 건너고 있는 트럭의 대수
-	
-	while (truck_weights.size() != 0) // 현재대기 중인 트럭이 0이 아니면 반복
+	queue<int> on_bridge;
+	int now_weight = 0;
+	int answer = 0;
+	for(int i = 0; i <truck_weights.size(); i++)
 	{
-		while(now_weight < weight) // 현재 다리 위에 가해진 무게가 한도 미만이면 반복
-		{
-			answer++; // 다리 올라갈 수 있을 때 트럭들 1초 걸림
-			now_weight += truck_weights.front(); // 맨앞에 대기중에 트럭의 무게 가중
-			truck_weights.erase(truck_weights.begin()); // 맨앞에 대기중인 트럭이 다리에 올랐으니 맨앞 제거
-			now_truck++;
-			if (truck_weights.size() == 0)
-				break;
-		}
-		
-		// 다리 위에 더이상 가해질 수 없는 무게가 된다면 밑의 구문 실행
-		answer = answer + bridge_length; // 1초당 거리1씩 움직일 수 있으니 다리이 만큼 더함
-		now_weight = 0; // 다 건넜으니 현재 다리 무게 가중치 0 초기화
-		
-		now_truck = 0; // 다 건넜으니 현재 다리위 트럭 0대로 초기화
+		int now_truck = truck_weights[i];
 
+		while(true)
+		{
+			if(on_bridge.empty())
+			{
+				answer++;
+				on_bridge.push(now_truck);
+				now_weight += now_truck;
+				break;
+			}
+			else if(on_bridge.size() == bridge_length)
+			{
+				now_weight -= on_bridge.front();
+				on_bridge.pop();
+			}
+			else
+			{
+				if(weight < (now_weight+ now_truck))
+				{
+					on_bridge.push(0);
+					answer++;
+				}
+				else
+				{
+					on_bridge.push(now_truck);
+					now_weight += now_truck;
+					answer++;
+					break;
+				}
+			}
+		}
 	}
 	
-
-	return answer;
+	return answer + bridge_length;
 }
 
 
