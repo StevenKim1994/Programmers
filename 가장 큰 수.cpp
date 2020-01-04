@@ -7,19 +7,7 @@ using namespace std;
 
 bool compare(string a, string b)
 {
-	bool greater_b = false;
-	if (a.length() != b.length()) 
-	{
-		if (a[0] >= b[0])
-		{
-			return false;
-		}
-		else
-			return true;
-	}
-	else {
-		return a < b;    // 맨 앞 숫자 기준 정렬 
-	}
+	return a + b < b + a ? true : false;
 }
 
 string solution(vector<int> numbers)
@@ -41,6 +29,20 @@ string solution(vector<int> numbers)
 	{
 		answer += int_stringtemps[i];
 	}
+
+	bool isZero = true;
+	for(int i = 0; i < answer.length(); i++)
+	{
+		if (answer[i] != '0')
+		{
+			isZero = false;
+			break;
+		}
+		
+	}
+
+	if (isZero == true)
+		answer = "0";
 	
 	return answer;
 }
