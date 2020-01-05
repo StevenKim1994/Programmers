@@ -1,3 +1,2 @@
-﻿  가장 큰 수.cpp
-C:\Users\dev\Documents\GitHub\Programmers\가장 큰 수.cpp(28,39): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  가운데 글자 가져오기.cpp
   Programmers.vcxproj -> C:\Users\dev\Documents\GitHub\Programmers\x64\Debug\Programmers.exe
