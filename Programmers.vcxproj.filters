@@ -45,5 +45,14 @@
     <ClCompile Include="숫자 야구.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="모의고사.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="완주하지 못한 선수(HashTable).cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="체육복.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
