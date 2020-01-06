@@ -39,5 +39,11 @@
     <ClCompile Include="가운데 글자 가져오기.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="미완 체육복.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="숫자 야구.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
