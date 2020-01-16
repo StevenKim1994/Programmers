@@ -1,87 +1,93 @@
 #include <iostream>
-#include <queue>
 #include <string>
-#include <vector>
 #include <stack>
 
 using namespace std;
 
 string solution(string number, int k)
 {
+	
 	int count = 0;
-	queue<char> ready;
-	stack<char> result;
+
 	string answer = "";
+	stack<char>ready;
+	stack<char>reverse;
 
 	for(int i=0; i<number.length(); i++)
 	{
-		if (count == k)
+		if(count == k)
 		{
-			int k = i;
-
-			for(k; k<number.length(); k++)
-			{
-				ready.push(number[k]);
-			}
 			break;
 		}
-		
-		if(ready.empty())
+		if(ready.empty() == true)
 		{
 			ready.push(number[i]);
 		}
+
 		else
 		{
-			if(number[i] <= ready.front())
+			if(number[i] <= ready.top())
 			{
-				if(count < k)
-				{
-					count++;
-					continue;
-				}
-		
+				ready.push(number[i]);
 			}
 			else
 			{
-				while(true)
+				while(true) 
 				{
-					if(ready.empty())
+					if(ready.size() == 0)
 					{
 						ready.push(number[i]);
 						break;
 					}
-					else
+					
+					if (count != k)
 					{
-						if(ready.front() < number[i])
-						{
-							count++;
-							ready.pop();
-						}
-						else
+						if (ready.top() >= number[i])
 						{
 							ready.push(number[i]);
 							break;
 						}
-
-						if (count == k)
-							break;
+						else
+						{
+							ready.pop();
+							count++;
+						}
+					}
+					else
+					{
+						int temp = i;
+						for(temp; temp<number.length(); temp++)
+						{
+							ready.push(number[temp]);
+						}
+						break;
 					}
 				}
+				
+				
 			}
 		}
 	}
-
-	for(int i = 0; i<ready.size(); i++)
+	if (count != k)
 	{
-		result.push(ready.front());
+		for(int i=count; i<k; i++)
+			ready.pop();
+	}
+	
+	int size = ready.size();
+
+	for(int i = 0; i < size; i++)
+	{
+		reverse.push(ready.top());
 		ready.pop();
 	}
 
-	for(int i =0; i<result.size(); i++)
+	for(int i = 0 ; i <size; i++)
 	{
-		answer += result.top();
-		result.pop();
+		answer += reverse.top();
+		reverse.pop();
 	}
+
 	
 	return answer;
 }
