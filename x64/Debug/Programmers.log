@@ -1,2 +1,4 @@
-﻿  위장.cpp
+﻿  소수 찾기.cpp
+C:\Users\XPS\Documents\GitHub\Programmers\소수 찾기.cpp(26,45): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\XPS\Documents\GitHub\Programmers\소수 찾기.cpp(26,45): warning C4267: '초기화 중': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Programmers.vcxproj -> C:\Users\XPS\Documents\GitHub\Programmers\x64\Debug\Programmers.exe
