@@ -66,7 +66,10 @@
     <ClCompile Include="위장.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="소수 찾기.cpp">
+    <ClCompile Include="N으로 표현.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="next_permutation 소수 찾기.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
