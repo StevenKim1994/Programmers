@@ -3,5 +3,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LocalDebuggerCommandArguments>clang++ -std=c++11 -O2 -Wno-unused-result -o FILENAME</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <RemoteDebuggerCommandArguments>clang++ -std=c++11 -O2 -Wno-unused-result -o FILENAME</RemoteDebuggerCommandArguments>
   </PropertyGroup>
 </Project>
