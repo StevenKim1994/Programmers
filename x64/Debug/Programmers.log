@@ -1,3 +1,2 @@
-﻿  주식가격.cpp
-E:\GitHub\Programmers\주식가격.cpp(14,30): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  NHN 모의시험 전광판.cpp
   Programmers.vcxproj -> E:\GitHub\Programmers\x64\Debug\Programmers.exe
