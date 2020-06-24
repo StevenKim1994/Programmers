@@ -1,2 +1,4 @@
 E:\GitHub\Programmers\x64\Debug\Programmers.exe
 E:\GitHub\Programmers\x64\Debug\Programmers.pdb
+C:\Users\user\Documents\GitHub\Programmers\x64\Debug\Programmers.exe
+C:\Users\user\Documents\GitHub\Programmers\x64\Debug\Programmers.pdb
