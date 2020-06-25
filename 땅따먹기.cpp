@@ -30,7 +30,7 @@ int solution(vector<vector<int>> land)
 }
 
 
-
+#if 0
 int main()
 {
 	int N, inputData;
@@ -53,3 +53,23 @@ int main()
 
 	return 0;
 }
+
+#else
+
+int sol(int n)
+{
+	if (n <= 0)
+		return 0;
+
+	return sol(n - 1) + sol(n);
+}
+int main()
+{
+	cout << sol(1) << endl;
+
+
+
+
+}
+
+#endif
