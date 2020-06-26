@@ -2,66 +2,64 @@
 #include <vector>
 #include <algorithm>
 #include <queue>
-
+#include <utility>
+#include <deque>
 using namespace std;
+
+struct myData
+{
+	int index;
+	int value;
+};
+
+struct compare 
+{
+	bool operator()(myData a, myData b)
+	{
+		return a.value < b.value;
+	}
+};
 
 int solution(vector<int> priorities, int location)
 {
 	int answer = 0;
 	int size = priorities.size();
-	int offset = 0;
-	queue<int> myQueue;
-	queue<int> resultQueue;
-	for (int i = 0; i < size; i++)
-	{
-		int maxValue;
-		if(priorities.size() > 0)
-			maxValue = *max_element(priorities.begin(), priorities.end());
-		
-		for (int j = 0; j < priorities.size(); j++)
-		{
-			if (priorities[j] == maxValue)
-			{
-				if (myQueue.size() > 0)
-				{
-					// 맨 앞의 값을 빼고 맨뒤로 넣는다.
-					int temp = myQueue.front();
-					myQueue.pop();
-					myQueue.push(j); // 새로 발견한 값의 인덱스를 큐에 push
-					myQueue.push(temp);
-				}
-				else
-					myQueue.push(j);
-				
-			}
-		}
-		
-		for (vector<int>::iterator it = priorities.begin(); it != priorities.end();)
-		{
-			if (*it == maxValue)
-			{
-				it = priorities.erase(it); // 지울떄 해당 인덱스를 어떻게 처리해야할지 고민해야할듯??????
-			
-			}
-
-			else
-				it++;
-		}
-
-		while (true)
-		{
-			if (myQueue.size() == 0)
-				break;
-
-			resultQueue.push(myQueue.front());
-			myQueue.pop();
-		}
+	priority_queue<myData, vector<myData>, compare> maxHeap;
+	deque<myData> wait_list;
 	
+	for (int i = 0; i < priorities.size(); i++)
+	{
+		myData data;
+		data.index = i;
+		data.value = priorities[i];
+		maxHeap.push(data);
 	}
 
-	for (int i = 0; i < resultQueue.size(); i++)
+	for (int i = 0; i < size; i++)
 	{
-		// 해당 순서 서치
+		if (wait_list.size() == 0)
+		{
+			wait_list.push_back(maxHeap.top());
+			maxHeap.pop();
+		}
+
+		else // 대기열에 하나 이상이라도 있을때
+		{
+			for (int j = 0; j < wait_list.size(); i++)
+			{
+				if (maxHeap.top().value <= wait_list[j].value)
+				{
+					myData temp = wait_list[j];
+					wait_list.push_back(maxHeap.top());
+					maxHeap.pop();
+				}
+				else
+				{
+					wait_list.push_front(maxHeap.top());
+					maxHeap.pop();
+				}
+			}
+		}
 	}
 
 	return answer;
